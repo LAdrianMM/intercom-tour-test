@@ -58,10 +58,9 @@ export function initIntercom(user) {
   window.intercomSettings = {
     email: user.email,
     name: user.name,
-    created_at: 1595007379,
+    created_at: user.created_at,
     user_id: user.name,
     app_id: intercomAppID,
-    hide_default_launcher: true,
   };
 }
 
