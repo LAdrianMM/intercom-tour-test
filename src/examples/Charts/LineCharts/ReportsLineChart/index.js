@@ -32,12 +32,19 @@ import MDTypography from "components/MDTypography";
 
 // ReportsLineChart configurations
 import configs from "examples/Charts/LineCharts/ReportsLineChart/configs";
+import { useNavigate } from "react-router-dom";
 
 function ReportsLineChart({ color, title, description, date, chart }) {
   const { data, options } = configs(chart.labels || [], chart.datasets || {});
+  const randomID = Math.round(Math.random() * 20);
+  const navigate = useNavigate();
+
+  const handleOnclick = () => {
+    navigate(`/${randomID}/${title}`);
+  };
 
   return (
-    <Card sx={{ height: "100%" }}>
+    <Card onClick={handleOnclick} sx={{ height: "100%", cursor: "pointer" }}>
       <MDBox padding="1rem">
         {useMemo(
           () => (

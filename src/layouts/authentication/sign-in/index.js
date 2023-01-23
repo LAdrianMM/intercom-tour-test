@@ -16,7 +16,7 @@ Coded by www.creative-tim.com
 import { useState } from "react";
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -34,15 +34,54 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
+import NotificationItem from "examples/Items/NotificationItem";
+import Menu from "@mui/material/Menu";
+import Icon from "@mui/material/Icon";
 
 // Authentication layout components
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 
+import profilesData from "layouts/profile/data/profilesListData";
+
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import { useMaterialUIController, setUser } from "context";
 
 function Basic() {
   const [rememberMe, setRememberMe] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [, dispatch] = useMaterialUIController();
+  const navigate = useNavigate();
+
+  const handleOpenMenu = (event) => setOpenMenu(event.currentTarget);
+  const handleCloseMenu = () => setOpenMenu(false);
+  const handleSignIn = (user) => {
+    setUser(dispatch, user);
+    navigate("/");
+  };
+
+  // Render the notifications menu
+  const renderMenu = () => (
+    <Menu
+      anchorEl={openMenu}
+      anchorReference={null}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "left",
+      }}
+      open={Boolean(openMenu)}
+      onClose={handleCloseMenu}
+      sx={{ mt: 2 }}
+    >
+      {profilesData.map((user) => (
+        <NotificationItem
+          onClick={() => handleSignIn(user)}
+          icon={<Icon>email</Icon>}
+          title={user.name}
+        />
+      ))}
+    </Menu>
+  );
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
@@ -84,7 +123,10 @@ function Basic() {
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form">
             <MDBox mb={2}>
-              <MDInput type="email" label="Email" fullWidth />
+              <MDButton onClick={handleOpenMenu} variant="gradient" color="info" fullWidth>
+                select user
+              </MDButton>
+              {renderMenu()}
             </MDBox>
             <MDBox mb={2}>
               <MDInput type="password" label="Password" fullWidth />

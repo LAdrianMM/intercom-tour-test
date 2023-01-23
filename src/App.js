@@ -53,6 +53,19 @@ import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "co
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
 
+export function initIntercom(user) {
+  const intercomAppID = "fx6p6wgs";
+
+  window.intercomSettings = {
+    email: user.email,
+    name: user.name,
+    created_at: 1595007379,
+    user_id: user.name,
+    app_id: intercomAppID,
+    hide_default_launcher: true,
+  };
+}
+
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
   const {
@@ -64,10 +77,13 @@ export default function App() {
     transparentSidenav,
     whiteSidenav,
     darkMode,
+    user,
   } = controller;
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
+
+  initIntercom(user);
 
   // Cache for the rtl
   useMemo(() => {
@@ -105,6 +121,7 @@ export default function App() {
 
   // Setting page scroll to 0 when changing the route
   useEffect(() => {
+    window.Intercom("update");
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
   }, [pathname]);

@@ -24,6 +24,8 @@ export default [
   {
     image: kal,
     name: "Sophie B.",
+    created_at: 143234123,
+    email: "sophie@mail.com",
     description: "Hi! I need more information..",
     action: {
       type: "internal",
@@ -36,6 +38,8 @@ export default [
     image: marie,
     name: "Anne Marie",
     description: "Awesome work, can you..",
+    created_at: 143234123,
+    email: "anne@mail.com",
     action: {
       type: "internal",
       route: "/pages/profile/profile-overview",
@@ -47,6 +51,8 @@ export default [
     image: ivana,
     name: "Ivanna",
     description: "About files I can..",
+    created_at: 143234123,
+    email: "ivanna@mail.com",
     action: {
       type: "internal",
       route: "/pages/profile/profile-overview",
@@ -58,6 +64,8 @@ export default [
     image: team4,
     name: "Peterson",
     description: "Have a great afternoon..",
+    created_at: 143234123,
+    email: "peterson@mail.com",
     action: {
       type: "internal",
       route: "/pages/profile/profile-overview",
@@ -68,6 +76,8 @@ export default [
   {
     image: team3,
     name: "Nick Daniel",
+    created_at: 143234123,
+    email: "nick@mail.com",
     description: "Hi! I need more information..",
     action: {
       type: "internal",

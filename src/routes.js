@@ -62,7 +62,7 @@ const routes = [
     name: "Tables",
     key: "tables",
     icon: <Icon fontSize="small">table_view</Icon>,
-    route: "/tables",
+    route: "/:randomID/tables",
     component: <Tables />,
   },
   {
@@ -70,7 +70,7 @@ const routes = [
     name: "Billing",
     key: "billing",
     icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/billing",
+    route: "/:randomID/billing",
     component: <Billing />,
   },
   {
@@ -94,7 +94,7 @@ const routes = [
     name: "Profile",
     key: "profile",
     icon: <Icon fontSize="small">person</Icon>,
-    route: "/profile",
+    route: "/:randomID/profile",
     component: <Profile />,
   },
   {
