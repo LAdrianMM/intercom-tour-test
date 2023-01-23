@@ -33,6 +33,7 @@ import BillingInformation from "layouts/billing/components/BillingInformation";
 import Transactions from "layouts/billing/components/Transactions";
 
 function Billing() {
+  window.Intercom("startTour", 407943);
   return (
     <DashboardLayout>
       <DashboardNavbar absolute isMini />
